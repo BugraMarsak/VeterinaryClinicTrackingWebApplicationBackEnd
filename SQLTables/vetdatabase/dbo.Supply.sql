@@ -4,6 +4,7 @@
     [UnitInStock]   INT            NOT NULL,
     [PurchaseDate]  DATETIME       NOT NULL,
     [PurchasePrice] FLOAT (53)     NOT NULL,
+    [UserName]      NCHAR (200)    NOT NULL,
     PRIMARY KEY CLUSTERED ([SupplyId] ASC)
 );
 
