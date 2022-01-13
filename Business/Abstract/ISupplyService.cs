@@ -14,5 +14,6 @@ namespace Business.Abstract
         IResult Add(Supply supply);
         IResult Delete(Supply supply);
         IResult Update(Supply supply);
+        IDataResult<Supply> GetById(int Id);
     }
 }

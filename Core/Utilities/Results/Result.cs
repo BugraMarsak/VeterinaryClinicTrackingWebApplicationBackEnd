@@ -9,7 +9,7 @@ namespace Core.Utilities.Results
     public class Result : IResult
     {
  
-        public Result(bool success, string message):this(success)//kendi diğer const. ını çağırıyor.
+        public Result(bool success, string message):this(success)
         {
             
             this.Message = message;
@@ -19,18 +19,6 @@ namespace Core.Utilities.Results
             this.Success = success;
             
         }
-        //public Result(bool success)
-        //{
-        //    if (success)
-        //    {
-        //        this.Message = "Product Added";
-        //    }
-        //    else
-        //    {
-        //        this.Message = "Product didn't Add";
-        //    }
-        //    this.Success = success;
-        //}
 
 
         public bool Success { get; }

@@ -29,9 +29,16 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<AnimalsManager>().As<IAnimalsService>();
             builder.RegisterType<EfAnimalsDal>().As<IAnimalsDal>();
-            
+
+            builder.RegisterType<AnimalRaceManager>().As<IAnimalRaceService>();
+            builder.RegisterType<EfAnimalRaceDal>().As<IAnimalRaceDal>();
+
             builder.RegisterType<AnimalInformationManager>().As<IAnimalInformationService>();
-            builder.RegisterType<EfAnimalInformationDal>().As<IAnimalInformationDal>();
+            builder.RegisterType<EfAnimalInformationDal>().As<IAnimalInformationDal>(); 
+
+
+            builder.RegisterType<SurgDoneManager>().As<ISurgDoneService>();
+            builder.RegisterType<EfSurgDoneDal>().As<ISurgDoneDal>();
 
             builder.RegisterType<PersonnelManager>().As<IPersonnelService>();
             builder.RegisterType<EfPersonnelDal>().As<IPersonnelDal>();
@@ -39,9 +46,17 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<SupplyManager>().As<ISupplyService>();
             builder.RegisterType<EfSupplyDal>().As<ISupplyDal>();
 
+            builder.RegisterType<UserManager>().As<IUserService>();
+            builder.RegisterType<EfUserDal>().As<IUserDal>();
 
-            //builder.RegisterType<AuthManager>().As<IAuthService>();
-            //builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+            builder.RegisterType<AppointmentManager>().As<IAppointmentService>();
+            builder.RegisterType<EfAppointmentDal>().As<IAppointmentDal>();
+
+            builder.RegisterType<AppointmentTypesManager>().As<IAppointmentTypesService>();
+            builder.RegisterType<EfAppointmentTypesDal>().As<IAppointmentTypesDal>();
+
+            builder.RegisterType<AuthManager>().As<IAuthService>();
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();

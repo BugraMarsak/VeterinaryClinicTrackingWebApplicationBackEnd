@@ -12,6 +12,7 @@ namespace Entities.Concrete
         public int SupplyId { get; set; }
         public string ProductName { get; set; }
         public int UnitInStock { get; set; }
+        public string UserName { get; set; }
         public DateTime PurchaseDate { get; set; }
         public double PurchasePrice { get; set; } //sqlde float C# da double'a denk
     }

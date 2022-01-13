@@ -12,5 +12,9 @@ namespace Business.Abstract
     {
         IDataResult<List<VaccinationCard>> GetAll();
         IDataResult<List<VaccinationCard>> GetById(int Id);
+        IDataResult<VaccinationCard> GetByVacId(int Id);
+        IResult Add(VaccinationCard vaccinationCard);
+        IResult Delete(VaccinationCard vaccinationCard);
+        IResult Update(VaccinationCard vaccinationCard);
     }
 }

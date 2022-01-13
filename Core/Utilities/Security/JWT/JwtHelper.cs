@@ -36,8 +36,7 @@ namespace Core.Utilities.Security.JWT
             return new AccessToken
             {
                 Token = token,
-                Expiration = _accessTokenExpiration,
-                UserId= user.Id
+                Expiration = _accessTokenExpiration
             };
 
         }

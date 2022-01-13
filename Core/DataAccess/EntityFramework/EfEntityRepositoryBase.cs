@@ -15,7 +15,7 @@ namespace Core.DataAccess.EntityFramework
     {
         public void Add(TEntity entity)
         {
-            using (TContext context = new TContext())
+            using (TContext context = new TContext())//işi bitince garbage collector gelip atar
             {
                 var addedEntity = context.Entry(entity);
                 addedEntity.State = EntityState.Added;
@@ -25,7 +25,7 @@ namespace Core.DataAccess.EntityFramework
 
         public void Delete(TEntity entity)
         {
-            using (TContext context = new TContext())
+            using (TContext context = new TContext())//işi bitince garbage collector gelip atar
             {
                 var DeletedEntity = context.Entry(entity);
                 DeletedEntity.State = EntityState.Deleted;
@@ -35,7 +35,7 @@ namespace Core.DataAccess.EntityFramework
 
         public TEntity Get(Expression<Func<TEntity, bool>> filter)
         {
-            using (TContext context = new TContext())
+            using (TContext context = new TContext())//işi bitince garbage collector gelip atar
             {
                 return context.Set<TEntity>().SingleOrDefault(filter);
             }
@@ -44,7 +44,7 @@ namespace Core.DataAccess.EntityFramework
 
         public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
         {
-            using (TContext context = new())
+            using (TContext context = new())//işi bitince garbage collector gelip atar
             {
                 return filter == null
                     ? context.Set<TEntity>().ToList() 
@@ -52,9 +52,10 @@ namespace Core.DataAccess.EntityFramework
             }
         }
 
+       
         public void Update(TEntity entity)
         {
-            using (TContext context = new TContext())
+            using (TContext context = new TContext())//işi bitince garbage collector gelip atar
             {
                 var uptatedEntity = context.Entry(entity);
                 uptatedEntity.State = EntityState.Modified;

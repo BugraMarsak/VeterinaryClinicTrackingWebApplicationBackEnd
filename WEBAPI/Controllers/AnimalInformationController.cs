@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -30,15 +31,68 @@ namespace WEBAPI.Controllers
         }
 
         [HttpGet("GetById")]
-        public IActionResult GetOrdersByUserId(int Id)
+        public IActionResult GetById(int Id)
         {
-            var result = _animalInformationService.GetById(Id);
+            var result = _animalInformationService.GetByAnimalId(Id);
             if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
+
+
+        [HttpGet("GetByUserId")]
+        public IActionResult GetByUserId(int Id)
+        {
+            var result = _animalInformationService.GetByUserId(Id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPost("add")]
+        public IActionResult add(AnimalInformation animalInformation)
+        {
+            var userExists = _animalInformationService.UserExist(animalInformation.AnimalId,animalInformation.AnimalKind);
+            if (!userExists.Success)
+            {
+                return BadRequest(userExists.Message);
+            }
+            var result = _animalInformationService.Add(animalInformation);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPost("delete")]
+        public IActionResult Delete(AnimalInformation animalInformation)
+        {
+            var result = _animalInformationService.Delete(animalInformation);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+
+        [HttpPost("update")]
+        public IActionResult Update(AnimalInformation animalInformation)
+        {
+            var result = _animalInformationService.Update(animalInformation);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+
 
     }
 

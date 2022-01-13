@@ -22,7 +22,14 @@ namespace Business.Concrete
 
         public IResult Add(AnimalInformation animalInformation)
         {
-            throw new NotImplementedException();
+            _animalInformatinDal.Add(animalInformation);
+            return new SuccessResult(Messages.added);
+        }
+
+        public IResult Delete(AnimalInformation animalInformation)
+        {
+            _animalInformatinDal.Delete(animalInformation);
+            return new SuccessResult(Messages.deleted);
         }
 
         public IDataResult<List<AnimalInformation>> GetAll()
@@ -30,14 +37,35 @@ namespace Business.Concrete
             return new SuccessDataResult<List<AnimalInformation>>(_animalInformatinDal.GetAll(), Messages.Listed);
         }
 
-        public IDataResult<AnimalInformation> GetById(int AnimalId)
+        public IDataResult<AnimalInformation> GetByAnimalId(int AnimalId)
         {
             return new SuccessDataResult<AnimalInformation>(_animalInformatinDal.Get(p => p.AnimalId == AnimalId));
         }
 
-        //public IDataResult<AnimalInformation> GetById(int animalId)
-        //{
-        //    
-        //}
+        public AnimalInformation GetById(int AnimalId,string kind)
+        {
+            return (_animalInformatinDal.Get(p => p.AnimalId == AnimalId && p.AnimalKind == kind));
+        }
+
+
+        public IDataResult<List<AnimalInformation>> GetByUserId(int UserId)
+        {
+            return new SuccessDataResult<List<AnimalInformation>>(_animalInformatinDal.GetAll(p => p.userId == UserId));
+        }
+
+        public IResult Update(AnimalInformation animalInformation)
+        {
+            _animalInformatinDal.Update(animalInformation);
+            return new SuccessResult(Messages.changed);
+        }
+
+        public IResult UserExist(int id,string kind)
+        {
+            if (GetById(id,kind) != null)
+            {
+                return new ErrorResult(Messages.UserAlreadyExists);
+            }
+            return new SuccessResult();
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace Entities.Concrete
     public class Personnel : IEntity
     {
         public int PersonnelId { get; set; }
+        public int UserId { get; set; }
         public string PersonnelPhoto { get; set; }
         public string PersonnelFullName { get; set; }
         public string PersonnelMail { get; set; }

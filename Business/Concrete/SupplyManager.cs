@@ -37,6 +37,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Supply>>(_supplyDal.GetAll(), Messages.Listed);
         }
 
+        public IDataResult<Supply> GetById(int Id)
+        {
+            return new SuccessDataResult<Supply>(_supplyDal.Get(p => p.SupplyId == Id), Messages.Listed);
+        }
+
         public IResult Update(Supply supply)
         {
             _supplyDal.Update(supply);
