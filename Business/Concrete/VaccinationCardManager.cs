@@ -39,7 +39,7 @@ namespace Business.Concrete
 
         public IDataResult<List<VaccinationCard>> GetById(int Id)
         {   
-            return new SuccessDataResult<List<VaccinationCard>>(_vaccinationCardDal.GetAll(p => p.AnimalId == Id), Messages.Listed);
+            return new SuccessDataResult<List<VaccinationCard>>(_vaccinationCardDal.GetAll(p => p.AnimalId == Id ), Messages.Listed);
         }
 
         public IDataResult<VaccinationCard> GetByVacId(int Id)

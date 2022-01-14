@@ -39,12 +39,12 @@ namespace Business.Concrete
 
         public IDataResult<AnimalInformation> GetByAnimalId(int AnimalId)
         {
-            return new SuccessDataResult<AnimalInformation>(_animalInformatinDal.Get(p => p.AnimalId == AnimalId));
+            return new SuccessDataResult<AnimalInformation>(_animalInformatinDal.Get(p => p.Id == AnimalId));
         }
 
         public AnimalInformation GetById(int AnimalId,string kind)
         {
-            return (_animalInformatinDal.Get(p => p.AnimalId == AnimalId && p.AnimalKind == kind));
+            return _animalInformatinDal.Get(p => p.AnimalId == AnimalId && p.AnimalKind==kind);
         }
 
 
@@ -64,8 +64,10 @@ namespace Business.Concrete
             if (GetById(id,kind) != null)
             {
                 return new ErrorResult(Messages.UserAlreadyExists);
+                
             }
             return new SuccessResult();
+
         }
     }
 }
